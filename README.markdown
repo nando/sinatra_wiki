@@ -12,8 +12,12 @@ It uses Sinatra.rb, and is being built as a learning experiment.
 * thin
 * haml
 
-## Other dependencies
-* sinatra-cache submodule (git submodule update --init)
+## Git submodules 
+* sinatra 
+* sinatra-cache
+* webrat (for testing only)
+
+Get them with `git submodule update --init`
 
 ## Usage
 

@@ -1,9 +1,13 @@
-%w(rubygems sinatra erb rdiscount thin yaml digest/sha1 haml).each do |lib|
+%w(rubygems erb rdiscount yaml digest/sha1 haml).each do |lib|
   require lib
 end
-Dir["lib/**/*.rb"].each do |lib|
+
+Dir["lib/*.rb"].each do |lib|
   require lib
 end
+
+require "lib/sinatra/lib/sinatra"
+require "lib/sinatra-cache/lib/cache"
 
 configure do
   @config = YAML::load(File.read('config.yml')).to_hash.each do |k,v|
@@ -23,7 +27,7 @@ end
 
 get '/' do
   @pages = Dir["public/**/*.txt"]
-  cache erb :home
+  cache erb(:home)
 end
 get '/:slug' do
   @page = Page.new(params[:slug])
@@ -31,7 +35,7 @@ get '/:slug' do
     redirect "/#{@page.name}/edit"
   else
     @content = @page.html
-    cache erb :page
+    cache erb(:page)
   end
 end
 get '/:slug/edit' do
@@ -50,5 +54,5 @@ post '/:slug/edit' do
 end
 
 get '/base.css' do
-  cache sass :base
+  cache sass(:base)
 end

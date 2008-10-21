@@ -10,7 +10,14 @@ It uses Sinatra.rb, and is being built as a learning experiment.
 * erb
 * rdiscount
 * thin
+* haml
 
+## Git submodules 
+* sinatra 
+* sinatra-cache
+* webrat (for testing only)
+
+Get them with `git submodule update --init`
 
 ## Usage
 
