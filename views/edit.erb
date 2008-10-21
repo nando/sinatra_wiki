@@ -1,9 +1,9 @@
 <h1>Editing <%= @page.name %></h1>
 
-<form method="POST">
+<form action="/<%= @page.name %>/edit" method="POST">
   <input type="text" name="title" value="<%= @page.name %>" id="title" />
   <br>
   <textarea name="body" rows="40" cols="100" style="font-family: Consolas; font-size: 13px"><%= @page.markdown %></textarea>
   <br>
-  <input type="submit" name="Enviar" value="Enviar" id="Enviar" accesskey="s" /> <a href="/<%= @page.name %>" accesskey="c">Cancelar</a>
+  <input type="submit" name="send" value="send" id="send" accesskey="s" /> <a href="/<%= @page.name %>" accesskey="c">Cancel</a>
 </form>

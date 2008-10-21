@@ -17,7 +17,7 @@ before do
 end
 
 get '/' do
-  @pages = Dir["public/**/*.txt"]
+  @pages = Page.pages
   cache erb(:home)
 end
 get '/:slug' do

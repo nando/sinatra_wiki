@@ -2,9 +2,18 @@ class Page
   attr_accessor :path, :name, :file, :is_new
   attr_writer :content
 
+  @@path_prefix = ''
+  def self.path_prefix= prefix
+    @@path_prefix = prefix
+  end
+ 
+  def self.pages
+    Dir["#{@@path_prefix}public/**/*.txt"]
+  end
+   
   def initialize(name)
     self.name = name
-    self.path = "public/#{self.name}.txt"
+    self.path = "#{@@path_prefix}public/#{self.name}.txt"
     if !File.exist? self.path
       self.is_new = true
       self.content = ""

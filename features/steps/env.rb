@@ -10,6 +10,21 @@ require 'webrat/sinatra/sinatra_session'
 require 'sinatra/test/common'
 require sinatrapp
 
+
+#Before(:all)
+require 'fileutils'
+Page.path_prefix = 'tmp/'
+FileUtils.mkdir_p 'tmp/public'
+
+#After(:all)
+at_exit do
+  FileUtils.rm_rf 'tmp/public'
+end
+
+Before do
+  FileUtils.rm Dir.glob('tmp/public/*')
+end
+
 World do
   Webrat::SinatraSession.new
 end
