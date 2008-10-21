@@ -1,13 +1,4 @@
-%w(rubygems erb rdiscount yaml digest/sha1 haml).each do |lib|
-  require lib
-end
-
-Dir["lib/*.rb"].each do |lib|
-  require lib
-end
-
-require "lib/sinatra/lib/sinatra"
-require "lib/sinatra-cache/lib/cache"
+require 'requires'
 
 configure do
   @config = YAML::load(File.read('config.yml')).to_hash.each do |k,v|

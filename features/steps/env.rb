@@ -4,10 +4,8 @@ sinatrapp = appdir + 'sinatra_wiki'
 # Set $0 (otherwise Sinatra will look for views in the wrong place)
 $0 = sinatrapp + '.rb' 
 
+require appdir + 'requires'
 require 'spec'
-[:webrat, :sinatra].each do |libdir|
-  $LOAD_PATH.unshift File.expand_path("#{appdir}lib/#{libdir}/lib")
-end
 require 'webrat/sinatra/sinatra_session'
 require 'sinatra/test/common'
 require sinatrapp
