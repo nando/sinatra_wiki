@@ -43,6 +43,11 @@ post '/:slug/edit' do
   expire_cache "/#{nice_title}"
   redirect "/#{nice_title}"
 end
+get '/:slug/destroy' do
+  auth
+  Page.destroy(params[:slug])
+  redirect "/"
+end
 
 get '/base.css' do
   cache sass(:base)

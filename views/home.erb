@@ -1,5 +1,10 @@
-<h2>Page list</h2>
 
+  <h2>Page list</h2>
+  <ul>
 <% @pages.each do |page| %>
-  <li><a href="/<%= File.basename(page,".txt") %>"><%= File.basename(page,".txt") %></a></li>
+    <li id="<%= page %>-links" >
+      <a href="/<%= page %>"><%= page %></a>
+      <a class="destroy" title="sure you WANNA DESTROY <%= page.upcase %>???" href="/<%= page %>/destroy">destroy</a>
+    </li>
 <% end %>
+  </ul>

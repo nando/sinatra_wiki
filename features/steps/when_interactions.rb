@@ -4,7 +4,11 @@ When /^I press "(.*)"$/ do |button|
   clicks_button(button)
 end
 
-When /^I follow "(.*)"$/ do |link|
+When /^I follow ["|'](.*)["|'] in ["|'](.*)["|']$/ do |link, selector|
+  clicks_link_within(selector, link)
+end
+
+When /^I follow ["|']([^ ]*)["|']$/ do |link|
   clicks_link(link)
 end
 

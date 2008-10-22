@@ -8,7 +8,13 @@ class Page
   end
  
   def self.pages
-    Dir["#{@@path_prefix}public/**/*.txt"]
+    Dir["#{@@path_prefix}public/**/*.txt"].map do |page|
+      File.basename(page,".txt")
+    end
+  end
+
+  def self.destroy(pagename)
+    FileUtils.rm "#{@@path_prefix}public/#{pagename}.txt"
   end
    
   def initialize(name)
