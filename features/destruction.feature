@@ -6,5 +6,5 @@ Feature: Page destruction
   Scenario: without autentication
     Given I have a page called "ugly-duck"
     When I visit the home
-    And I follow "destroy" in "ugly-duck-links"
+    And I follow "destroy" in "#ugly-duck-links"
     Then I should not see "ugly-duck"
