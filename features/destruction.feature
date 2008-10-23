@@ -3,8 +3,9 @@ Feature: Page destruction
   As a user
   I want to desdroy the ugly one
 
-  Scenario: without autentication
+  Scenario: without authentication
     Given I have a page called "ugly-duck"
+    And authentication is disabled
     When I visit the home
     And I follow "destroy" in "#ugly-duck-links"
     Then I should not see "ugly-duck"

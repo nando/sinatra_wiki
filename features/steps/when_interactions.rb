@@ -37,9 +37,6 @@ When /^I attach the file at "(.*)" to "(.*)" $/ do |path, field|
 end
 
 When /^I visit (.*)$/ do |place| 
-  case place.downcase
-  when 'the home' then visits "/"
-  else visits place
-  end
+  visits feature_place_to_app_path(place)
 end
 

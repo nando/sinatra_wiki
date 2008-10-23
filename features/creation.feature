@@ -3,9 +3,26 @@ Feature: Page creation
   As a user
   I want to create a new one
 
-  Scenario: without autentication
+  Scenario: without authentication
+    Given authentication is disabled
     When I visit /brand-new
     And I fill in "body" with "This is my brand new wiki page!"
     And I press "send"
     Then I should see "brand-new"
     And I should see "This is my brand new wiki page!"
+    
+  Scenario: with authentication without credentials
+    Given authentication is enabled
+    Then I get a 401 error when I visit /brand-new 
+    
+  Scenario: with authentication and good credentials
+    Given authentication is enabled
+    And username is set to foo and password is set to bar
+    And I have logged in with username foo and password bar
+    When I visit /brand-new
+    And I fill in "body" with "This is my brand new wiki page!"
+    And I press "send"
+    Then I should see "brand-new"
+    And I should see "This is my brand new wiki page!"
+    
+    

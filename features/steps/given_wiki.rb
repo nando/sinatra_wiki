@@ -3,3 +3,16 @@ Given /^I have a page called "(.*)"$/ do |name|
   Page.new name
 end
 
+Given /authentication is (.*)/ do |mode|
+  set :use_auth, (mode.downcase == 'enabled')
+end
+
+Given /username is set to ['|"]?(.*)['|"]? and password is set to ['|"]?(.*)['|"]?/ do |user, pass|
+  set :username, user
+  set :password, Digest::SHA1.hexdigest(pass)
+end
+
+Given /I have logged in with username ['|"]?(.*)['|"]? and password ['|"]?(.*)['|"]?/ do |user, pass|
+  basic_auth user, pass
+end
+

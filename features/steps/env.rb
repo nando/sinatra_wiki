@@ -10,6 +10,12 @@ require 'webrat/sinatra/sinatra_session'
 require 'sinatra/test/common'
 require sinatrapp
 
+def feature_place_to_app_path(place)
+    case place.downcase
+    when 'the home' then "/"
+    else place
+    end
+end
 
 #Before(:all)
 require 'fileutils'
