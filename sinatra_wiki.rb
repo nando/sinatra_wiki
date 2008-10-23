@@ -22,11 +22,11 @@ get '/' do
 end
 get '/:slug' do
   @page = Page.new(params[:slug])
-  if @page.is_new
-    redirect "/#{@page.name}/edit"
-  else
+  if @page.exists?
     @content = @page.html
     cache erb(:page)
+  else
+    redirect "/#{@page.name}/edit"
   end
 end
 get '/:slug/edit' do

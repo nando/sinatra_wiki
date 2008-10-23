@@ -8,12 +8,14 @@ Feature: Page creation
     When I visit /brand-new
     And I fill in "body" with "This is my brand new wiki page!"
     And I press "send"
-    Then I should see "brand-new"
+    Then the page brand-new DOES exist 
+    And I should see "brand-new"
     And I should see "This is my brand new wiki page!"
     
   Scenario: with authentication without credentials
     Given authentication is enabled
-    Then I get a 401 error when I visit /brand-new 
+    Then I get a 401 error when I visit /brand-new
+    And the page "brand-new" does NOT exist
     
   Scenario: with authentication and good credentials
     Given authentication is enabled
@@ -22,7 +24,8 @@ Feature: Page creation
     When I visit /brand-new
     And I fill in "body" with "This is my brand new wiki page!"
     And I press "send"
-    Then I should see "brand-new"
+    Then the page brand-new DOES exist 
+    And I should see brand-new
     And I should see "This is my brand new wiki page!"
     
     

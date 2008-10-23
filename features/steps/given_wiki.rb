@@ -1,6 +1,6 @@
 # Steps to get the right wiki groove
 Given /^I have a page called "(.*)"$/ do |name| 
-  Page.new name
+  Page.new(name).content = 'Thanks for read me!'
 end
 
 Given /authentication is (.*)/ do |mode|
