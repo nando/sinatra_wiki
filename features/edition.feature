@@ -22,3 +22,13 @@ Feature: Page edition
     Then I should see "readme"
     And I should NOT see "Thanks!"
     And I should see "This is my changed wiki page!"
+
+  Scenario: without authentication
+    Given authentication is enabled
+    And I have a page called "readme" with "Thanks!"
+    When I visit /readme
+    And I try to follow "Edit"
+    Then I get a 401 error
+    
+    
+

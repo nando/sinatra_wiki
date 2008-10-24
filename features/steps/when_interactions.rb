@@ -4,12 +4,12 @@ When /^I press "(.*)"$/ do |button|
   clicks_button(button)
 end
 
-When /^I follow ["|'](.*)["|'] in ["|'](.*)["|']$/ do |link, selector|
-  clicks_link_within(selector, link)
+When /^I (t?r?y?) ?t?o? ?follow ["|'](.*)["|'] in ["|'](.*)["|']$/ do |try, link, selector|
+  try_if_try(try, "clicks_link_within('#{selector}', '#{link}')")
 end
 
-When /^I follow ["|']([^ ]*)["|']$/ do |link|
-  clicks_link(link)
+When /^I (t?r?y?) ?t?o? ?follow ["|']([^ ]*)["|']$/ do |try, link|
+  try_if_try(try, "clicks_link('#{link}')")
 end
 
 When /^I fill in "(.*)" with "(.*)"$/ do |field, value|
@@ -36,7 +36,7 @@ When /^I attach the file at "(.*)" to "(.*)" $/ do |path, field|
   attaches_file(field, path)
 end
 
-When /^I visit (.*)$/ do |place| 
-  visits feature_place_to_app_path(place)
+When /^I (t?r?y?) ?t?o? ?visit (.*)$/ do |try, place| 
+  try_if_try try, "visits '#{feature_place_to_app_path(place)}'"
 end
 

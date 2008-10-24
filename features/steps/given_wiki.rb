@@ -1,6 +1,6 @@
 # Steps to get the right wiki groove
-Given /^I have a page called "(.*)"$/ do |name| 
-  Page.new(name).content = 'Thanks for read me!'
+Given /^I have a page called "([^"]+)" ?w?i?t?h? ?"?([^"]*)"?$/ do |name, content| 
+  Page.new(name).content = content
 end
 
 Given /authentication is (.*)/ do |mode|

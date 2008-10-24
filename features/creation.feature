@@ -14,7 +14,8 @@ Feature: Page creation
     
   Scenario: with authentication without credentials
     Given authentication is enabled
-    Then I get a 401 error when I visit /brand-new
+    When I try to visit /brand-new
+    Then I get a 401 error
     And the page "brand-new" does NOT exist
     
   Scenario: with authentication and good credentials

@@ -11,13 +11,7 @@ Then /^I should see a link to "(.*)"$/i do |text|
   response.body.should =~ /href="\/#{text}"/m
 end
 
-Then /^I get a (\d\d\d) error when I visit ['|"]?(.*)['|"]?$/i do |code, place|
-  visits feature_place_to_app_path(place) rescue nil  
-  response.status.should == code.to_i
-end
-
-Then /^I get a (\d\d\d) error when I follow ['|"]?([^'"]+)['|"]? in ["|'](.*)["|']$/i do |code, link, selector|
-  clicks_link_within(selector, link) rescue nil 
+Then /^I get a (\d\d\d) error$/i do |code|
   response.status.should == code.to_i
 end
 

@@ -1,21 +1,15 @@
+#require 'ruby-debug'
 appdir = File.dirname(__FILE__) + '/../../'
 sinatrapp = appdir + 'sinatra_wiki'
-
-# Set $0 (otherwise Sinatra will look for views in the wrong place)
-$0 = sinatrapp + '.rb' 
-require 'ruby-debug'
+$0 = sinatrapp + '.rb' # otherwise Sinatra will look for views in the wrong place
 require appdir + 'requires'
 require 'spec'
 require 'webrat/sinatra/sinatra_session'
 require 'sinatra/test/common'
-require sinatrapp
+require File.dirname(__FILE__) + '/feature_step_helper'
+Webrat::SinatraSession.send(:include, FeatureStepHelper)
 
-def feature_place_to_app_path(place)
-    case place.downcase
-    when 'the home' then "/"
-    else place
-    end
-end
+require sinatrapp
 
 #Before(:all)
 require 'fileutils'

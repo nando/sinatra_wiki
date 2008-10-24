@@ -16,7 +16,8 @@ Feature: Page destruction
     Given I have a page called "ugly-duck"
     And authentication is enabled
     When I visit the home
-    Then I get a 401 error when I follow "destroy" in "#ugly-duck-links"
+    And I try to follow "destroy" in "#ugly-duck-links"
+    Then I get a 401 error
     And the page "ugly-duck" DOES exist
     
   Scenario: with authentication and good credentials
