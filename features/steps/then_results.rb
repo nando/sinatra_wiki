@@ -17,7 +17,7 @@ end
 
 Then /^the page ["']?([^"']+)["']? DOES (NOT)? ?exist$/i do |slug, negation|
   page = Page.new(slug)
-  page.exists?.should ( negation.blank? ? be_true : be_false)
+  page.exists?.should negation.blank? ? be_true : be_false
   page.harakiri unless page.exists?
 end
 
