@@ -11,6 +11,7 @@ It uses Sinatra.rb, and is being built as a learning experiment.
 * rdiscount
 * thin
 * haml
+* hpricot
 
 ## Git submodules 
 * sinatra 
